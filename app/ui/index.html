@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>MIDNIGHT · Music, after dark</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="desktop">
+    <div class="app-shell">
+      <aside class="sidebar">
+        <button class="brand" id="home-logo" data-page="Discover" title="Return to Discover" aria-label="Return to MIDNIGHT Discover">
+          <span class="brand-mark"><i></i><i></i><i></i><i></i></span>
+          <span>MIDNIGHT</span>
+        </button>
+
+        <div class="side-scroll">
+          <section class="nav-group">
+            <p class="nav-label">MENU</p>
+            <button class="nav-item active" data-page="Discover"><span class="nav-icon">⌂</span>Discover</button>
+            <button class="nav-item" data-page="Explorer"><span class="nav-icon">✳</span>Explorer</button>
+            <button class="nav-item" data-page="Radio"><span class="nav-icon">◉</span>Radio</button>
+            <button class="nav-item" data-page="Search"><span class="nav-icon">⌕</span>Search</button>
+          </section>
+
+          <section class="nav-group">
+            <p class="nav-label">LIBRARY</p>
+            <button class="nav-item" data-page="My Music"><span class="nav-icon">♫</span>My Music</button>
+            <button class="nav-item" data-page="Albums"><span class="nav-icon">▧</span>Albums</button>
+            <button class="nav-item" data-page="Artists"><span class="nav-icon">♙</span>Artists</button>
+          </section>
+
+          <section class="nav-group">
+            <p class="nav-label">PLAYLIST</p>
+            <button class="nav-item" data-playlist="Cover"><span class="nav-icon">▣</span>Cover</button>
+            <button class="nav-item" data-page="Favorites"><span class="nav-icon">♡</span>Favorites</button>
+            <button class="nav-item" data-page="Shared"><span class="nav-icon">↗</span>Shared</button>
+            <button class="nav-item" data-page="Downloads"><span class="nav-icon">↓</span>Downloads</button>
+          </section>
+
+          <section class="nav-group">
+            <div class="nav-label-row"><p class="nav-label">YOUR PLAYLISTS</p><button id="new-playlist" class="icon-button small" title="Create playlist">＋</button></div>
+            <div id="playlist-nav">
+              <button class="nav-item" data-playlist="Night drive"><span class="playlist-dot dot-purple"></span>Night drive</button>
+              <button class="nav-item" data-playlist="Soft focus"><span class="playlist-dot dot-blue"></span>Soft focus</button>
+              <button class="nav-item" data-playlist="Sunday morning"><span class="playlist-dot dot-pink"></span>Sunday morning</button>
+            </div>
+          </section>
+
+          <section class="nav-group extras">
+            <p class="nav-label">OTHERS</p>
+            <button class="nav-item" data-page="Settings"><span class="nav-icon">⚙</span>Settings</button>
+            <button class="nav-item" id="logout-button"><span class="nav-icon">⇥</span>Logout</button>
+          </section>
+        </div>
+
+        <div class="sidebar-foot"><span class="online-dot"></span><span>YOUR MUSIC, YOUR MOMENT</span></div>
+      </aside>
+
+      <main class="main-column">
+        <header class="topbar">
+          <nav class="top-links" aria-label="Music categories">
+            <button class="top-link selected" data-page="Discover">Music</button>
+            <button class="top-link" data-page="Podcasts">Podcast</button>
+            <button class="top-link" data-page="Radio">Radio</button>
+            <button class="top-link" data-page="Live">Live</button>
+          </nav>
+          <div class="top-actions">
+            <form class="global-search" id="global-search-form" autocomplete="off">
+              <span class="search-glass">⌕</span>
+              <input id="global-search" type="search" placeholder="Search songs, artists, albums…" aria-label="Search music">
+              <button class="search-submit" aria-label="Search">↵</button>
+              <div id="suggestions" class="suggestions hidden"></div>
+            </form>
+            <button class="round-action" id="header-favorites" title="Liked songs">♡</button>
+            <button class="round-action notification" id="notification-button" title="Notifications">♧<span></span></button>
+            <button class="profile" id="profile-button"><span class="profile-avatar">M</span><span class="profile-name">My Music</span><span class="chevron">⌄</span></button>
+          </div>
+        </header>
+
+        <div class="content-scroll" id="content-scroll">
+          <section id="playback-stage" class="playback-stage hidden" aria-label="Now playing">
+            <article class="stage-album-card" aria-label="Music player controls">
+              <div class="stage-card-heading"><span class="eyebrow">NOW PLAYING</span><span class="stage-live-dot">TRACK PLAYER</span></div>
+              <div id="stage-art" class="cover-art art-amber stage-art"><span class="cover-sun"></span><span class="cover-orbit"></span><span class="cover-line"></span><b>M / 01</b></div>
+              <div class="stage-track-copy"><h2 id="stage-title">Choose a song</h2><p id="stage-artist">Search music to get started</p></div>
+              <div class="stage-progress"><span id="stage-progress-fill"></span></div>
+              <div class="stage-times"><span id="stage-current-time">0:00</span><span id="stage-duration">0:00</span></div>
+              <div class="stage-transport" aria-label="Track controls">
+                <button class="stage-control" id="stage-previous-button" title="Previous track" aria-label="Previous track"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 5v14M19 6 9 12l10 6z"/></svg></button>
+                <button class="stage-play" id="stage-play-button" title="Play" aria-label="Play"><svg class="play-icon" viewBox="0 0 24 24" aria-hidden="true"><path class="play-shape" d="M9 5v14l9-7z"/><path class="pause-shape" d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg></button>
+                <button class="stage-control" id="stage-next-button" title="Next track" aria-label="Next track"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 5v14M5 6l10 6-10 6z"/></svg></button>
+              </div>
+            </article>
+            <div class="stage-video-column">
+              <div class="stage-head"><div><span class="eyebrow">OFFICIAL YOUTUBE VIDEO</span><h2>Watch with YouTube controls</h2></div><span class="player-window-label">Playing in this window</span></div>
+              <div class="video-panel"><div class="video-frame"><div id="youtube-player"></div></div></div>
+              <p class="stage-video-note">The video, captions, and standard YouTube controls remain available here.</p>
+            </div>
+            <div class="queue-panel">
+              <div class="queue-panel-head"><div><h2>Up next</h2><span id="queue-count">Your listening queue</span></div><button class="icon-button small" id="clear-queue" title="Clear queue">⌫</button></div>
+              <div id="queue-items" class="queue-items"></div>
+            </div>
+          </section>
+          <section id="page-content" class="page-content" aria-live="polite"></section>
+        </div>
+      </main>
+
+      <aside class="right-rail">
+        <div class="right-head"><span class="eyebrow">YOUR LISTENING ROOM</span><button class="icon-button" title="More options">•••</button></div>
+        <section class="chart-section">
+          <div class="section-title"><h2>Quick picks</h2><button class="text-button" id="chart-more">Explore <span>↗</span></button></div>
+          <div id="weekly-chart" class="weekly-chart"></div>
+        </section>
+
+        <section class="now-card">
+          <div class="section-title"><h2>Now playing</h2><button class="icon-button" id="right-more" title="Share song">↗</button></div>
+          <div id="right-art" class="cover-art art-amber large-art"><span class="cover-sun"></span><span class="cover-orbit"></span><span class="cover-line"></span><b>M / 01</b></div>
+          <div class="right-song-row"><div class="right-song-text"><h3 id="right-title">Choose a song</h3><p id="right-artist">Search music to get started</p></div><button class="like-button" id="right-like" title="Like song">♡</button></div>
+          <div class="right-progress"><span id="right-progress-fill"></span></div>
+          <div class="right-times"><span id="right-current-time">0:00</span><span id="right-duration">0:00</span></div>
+          <div class="mini-transport" aria-label="Now playing controls">
+            <button class="mini-control" id="right-previous-button" title="Previous track"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 5v14M19 6 9 12l10 6z"/></svg></button>
+            <button class="mini-play" id="right-play-button" title="Play or pause" aria-label="Play"><svg class="play-icon" viewBox="0 0 24 24" aria-hidden="true"><path class="play-shape" d="M9 5v14l9-7z"/><path class="pause-shape" d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg></button>
+            <button class="mini-control" id="right-next-button" title="Next track"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 5v14M5 6l10 6-10 6z"/></svg></button>
+          </div>
+          <div class="room-note"><span class="room-pulse"></span><div><b>LISTENING ROOM</b><span id="room-status">Ready when you are</span></div><button class="icon-button" id="queue-toggle" title="View queue">☷</button></div>
+        </section>
+      </aside>
+
+      <footer class="player-bar">
+        <div class="bar-track">
+          <div id="bar-art" class="cover-art art-amber bar-art"><span class="cover-sun"></span><span class="cover-orbit"></span><span class="cover-line"></span><b>M / 01</b></div>
+          <div class="bar-track-info"><strong id="bar-title">Choose a song</strong><span id="bar-artist">Search for a track to begin</span></div>
+          <button class="like-button bar-like" id="bar-like" title="Like song">♡</button>
+        </div>
+
+        <div class="bar-controls">
+          <div class="transport">
+            <button class="control-button subtle" id="shuffle-button" title="Shuffle queue"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 3h5v5M4 20 21 3M21 16v5h-5M4 4l5 5m3 3 9 9"/></svg></button>
+            <button class="control-button" id="previous-button" title="Previous track"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 5v14M19 6 9 12l10 6z"/></svg></button>
+            <button class="play-button" id="play-button" title="Play" aria-label="Play"><svg class="play-icon" viewBox="0 0 24 24" aria-hidden="true"><path class="play-shape" d="M9 5v14l9-7z"/><path class="pause-shape" d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg></button>
+            <button class="control-button" id="next-button" title="Next track"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 5v14M5 6l10 6-10 6z"/></svg></button>
+            <button class="control-button subtle" id="repeat-button" title="Repeat"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17 2l4 4-4 4M3 11V9a3 3 0 0 1 3-3h15M7 22l-4-4 4-4m14-1v2a3 3 0 0 1-3 3H3"/></svg></button>
+          </div>
+          <div class="seek-row"><span id="elapsed-time">0:00</span><input id="seek-slider" type="range" min="0" max="1000" value="0" aria-label="Seek"><span id="total-time">0:00</span></div>
+        </div>
+
+        <div class="bar-extra"><button class="control-button subtle" id="share-current" title="Share song"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V3m0 0L7 8m5-5 5 5M5 13v7h14v-7"/></svg></button><button class="control-button subtle" id="queue-button" title="Queue"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/></svg></button><button class="control-button subtle" id="mute-button" title="Mute or unmute"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10v4h4l5 4V6l-5 4H4zm13-3a7 7 0 0 1 0 10m3-13a11 11 0 0 1 0 16"/></svg></button><input id="volume-slider" type="range" min="0" max="100" value="75" aria-label="Volume"><button class="control-button subtle" id="expand-player" title="Scroll to player"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/></svg></button></div>
+      </footer>
+    </div>
+  </div>
+
+  <div id="toast" class="toast hidden" role="status"></div>
+  <dialog id="playlist-dialog" class="playlist-dialog">
+    <form method="dialog"><button class="dialog-close" aria-label="Close">×</button></form>
+    <span class="eyebrow">YOUR LIBRARY</span>
+    <h2>Add to playlist</h2>
+    <div id="playlist-choices" class="playlist-choices"></div>
+    <button id="dialog-new-playlist" class="dialog-new">＋ Create a playlist</button>
+  </dialog>
+  <script src="app.js"></script>
+</body>
+</html>

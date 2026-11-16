@@ -1,0 +1,5 @@
+.env
+.midnight_library.json
+__pycache__/
+*.py[cod]
+.venv*/

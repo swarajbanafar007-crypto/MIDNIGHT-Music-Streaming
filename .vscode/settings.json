@@ -1,0 +1,10 @@
+{
+    "python.terminal.useEnvFile": true,
+    "files.exclude": {
+        "**/__pycache__": true,
+        "**/.venv": true,
+        "**/.venv-*": true,
+        "**/.env": true,
+        "**/.midnight_library.json": true
+    }
+}
